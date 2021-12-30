@@ -15,26 +15,26 @@ function App() {
   useEffect(() => {
     async function fetchData() {
       try {
-        setFetchStatus({
-          ...fetchStatus,
+        setFetchStatus(prevState => ({
+          ...prevState,
           isLoading: true
-        });
+        }));
 
         const fetchedData = await axios.get(`${baseURL}holdings`);
 
-        setFetchStatus({
-          ...fetchStatus,
+        setFetchStatus(prevState => ({
+          ...prevState,
           isLoading: false,
           isError: false
-        });
+        }));
 
         setHoldingsData(fetchedData);
       } catch (error) {
-        setFetchStatus({
-          ...fetchStatus,
+        setFetchStatus(prevState => ({
+          ...prevState,
           isLoading: false,
           isError: true
-        });
+        }));
       }
     }
 
