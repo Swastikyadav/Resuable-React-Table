@@ -21,6 +21,12 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
+.main__heading {
+  text-align: center;
+  font-size: 3.2rem;
+  margin: 20px 0 60px 0;
+}
+
 /* Media Query */
 
 @media all and (max-width: 1024px) {

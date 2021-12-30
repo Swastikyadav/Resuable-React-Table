@@ -44,6 +44,8 @@ function App() {
 
   return (
     <main className="main">
+      <h1 className="main__heading">Reusable React Table Component</h1>
+
       {fetchStatus.isLoading ? (
         "Loading..."
       ) : (
