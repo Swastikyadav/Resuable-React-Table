@@ -27,6 +27,17 @@ body {
   margin: 20px 0 60px 0;
 }
 
+.main__errorMessage {
+  text-align: center;
+  font-size: 18px;
+  margin: 100px 0;
+  color: red;
+}
+
+.loader {
+  margin: 100px 0;
+}
+
 /* Media Query */
 
 @media all and (max-width: 1024px) {

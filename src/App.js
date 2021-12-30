@@ -3,6 +3,7 @@ import axios from "axios";
 
 import Table from "./components/Table";
 import { holdingsColumns } from "./utils";
+import Loader from "./components/Loader";
 
 const baseURL = "https://canopy-frontend-task.now.sh/api/";
 
@@ -47,12 +48,14 @@ function App() {
       <h1 className="main__heading">Reusable React Table Component</h1>
 
       {fetchStatus.isLoading ? (
-        "Loading..."
+        <Loader />
       ) : (
         <Table data={holdingsData.payload} columns={holdingsColumns} />
       )}
-      <br />
-      {fetchStatus.isError && "Something went wrong..."}
+
+      {fetchStatus.isError && (
+        <p className="main__errorMessage">Something went wrong...</p>
+      )}
     </main>
   );
 }
