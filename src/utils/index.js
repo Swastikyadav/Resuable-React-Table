@@ -1,4 +1,4 @@
-import { holdingsColumns } from "./columnsUtils";
+import { holdingsColumns, transactionsColumns } from "./columnsUtils";
 import { formatDate, formateAmount } from "./tableUtils";
 
-export { holdingsColumns, formatDate, formateAmount };
+export { holdingsColumns, transactionsColumns, formatDate, formateAmount };

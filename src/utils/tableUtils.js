@@ -1,7 +1,7 @@
 import moment from "moment";
 
 function formatDate(cellValue) {
-  return moment(new Date(cellValue)).format("DD/MM/YYYY");
+  return moment(cellValue, "DD-MM-YYYY").format("DD/MM/YYYY");
 }
 
 function formateAmount(cellValue) {

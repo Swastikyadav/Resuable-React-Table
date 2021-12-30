@@ -36,4 +36,37 @@ const holdingsColumns = [
   }
 ];
 
-export { holdingsColumns };
+const transactionsColumns = [
+  {
+    Header: "Name",
+    accessor: "name",
+    type: "Text"
+  },
+  {
+    Header: "Ticket Ref",
+    accessor: "ticketref",
+    type: "Text"
+  },
+  {
+    Header: "Trade Date",
+    accessor: "traded_on",
+    type: "Date"
+  },
+  {
+    Header: "Quantity",
+    accessor: "quantity",
+    type: "Amount"
+  },
+  {
+    Header: "Currency",
+    accessor: "currency",
+    type: "Text"
+  },
+  {
+    Header: "Settled Amount",
+    accessor: "settlement_amount",
+    type: "Amount"
+  }
+];
+
+export { holdingsColumns, transactionsColumns };

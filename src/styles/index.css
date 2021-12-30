@@ -38,6 +38,18 @@ body {
   margin: 100px 0;
 }
 
+.holdingsTable h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin: 100px 0 10px 0;
+}
+
+.transactionsTable h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin: 10px;
+}
+
 /* Media Query */
 
 @media all and (max-width: 1024px) {
