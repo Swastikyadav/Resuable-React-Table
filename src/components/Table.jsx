@@ -1,5 +1,7 @@
 import { useTable } from "react-table";
 
+import { formatDate, formateAmount } from "../utils";
+
 import "../styles/table.css";
 
 function Table({ data, columns }) {
@@ -10,7 +12,19 @@ function Table({ data, columns }) {
     rows,
     prepareRow
   } = useTable({ columns, data });
-  console.log(headerGroups[0]);
+
+  const formatCellValue = cell => {
+    const cellValue = cell.render("Cell").props.value;
+
+    if (cell.column.type === "Date") {
+      return formatDate(cellValue);
+    } else if (cell.column.type === "Amount") {
+      return formateAmount(cellValue);
+    } else {
+      return cellValue;
+    }
+  };
+
   return (
     <div className="table-div">
       <table {...getTableProps()}>
@@ -29,7 +43,7 @@ function Table({ data, columns }) {
               <tr {...row.getRowProps()}>
                 {row.cells.map(cell => {
                   return (
-                    <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                    <td {...cell.getCellProps()}>{formatCellValue(cell)}</td>
                   );
                 })}
               </tr>

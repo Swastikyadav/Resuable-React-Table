@@ -27,12 +27,12 @@ const holdingsColumns = [
   {
     Header: "Change Percentage",
     accessor: "latest_chg_pct",
-    type: "Float"
+    type: "Amount"
   },
   {
     Header: "Base CCY",
     accessor: "market_value_ccy",
-    type: "Float"
+    type: "Amount"
   }
 ];
 
