@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import Table from "./components/Table";
+import { holdingsColumns } from "./utils";
 
 const baseURL = "https://canopy-frontend-task.now.sh/api/";
 
 function App() {
-  const [holdingsData, setHoldingsData] = useState([]);
+  const [holdingsData, setHoldingsData] = useState({ payload: [] });
   const [fetchStatus, setFetchStatus] = useState({
     isLoading: false,
     isError: false
@@ -28,7 +29,7 @@ function App() {
           isError: false
         }));
 
-        setHoldingsData(fetchedData);
+        setHoldingsData(fetchedData.data);
       } catch (error) {
         setFetchStatus(prevState => ({
           ...prevState,
@@ -42,12 +43,15 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      {fetchStatus.isLoading ? "Loading..." : <Table />}
+    <main className="main">
+      {fetchStatus.isLoading ? (
+        "Loading..."
+      ) : (
+        <Table data={holdingsData.payload} columns={holdingsColumns} />
+      )}
       <br />
-      {fetchStatus.isError ? "Something went wrong..." : ""}
-      <br />
-    </div>
+      {fetchStatus.isError && "Something went wrong..."}
+    </main>
   );
 }
 

@@ -1,0 +1,39 @@
+/* Table */
+
+.table-div {
+  font-size: 1.2rem;
+  overflow-x: auto;
+}
+
+table {
+  margin: 0 auto;
+  min-width: 600px;
+  width: 100rem;
+  border-collapse: collapse;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+table tr {
+  background: #fff;
+  text-align: center;
+  height: 80px;
+  border-bottom: 1px solid rgb(179, 179, 179);
+}
+
+table thead tr {
+  background: #7180bf;
+  color: #fff;
+  font-weight: 400;
+}
+
+table tr th {
+  padding: 5px;
+  text-align: center;
+  border-left: 1px solid rgba(255, 255, 255, 0.4);
+  border-right: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+table tr td {
+  padding: 5px;
+  text-align: center;
+}
