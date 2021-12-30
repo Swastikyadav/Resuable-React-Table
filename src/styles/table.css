@@ -1,7 +1,7 @@
 /* Table */
 
 .table-div {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   overflow-x: auto;
 }
 
@@ -16,7 +16,7 @@ table {
 table tr {
   background: #fff;
   text-align: center;
-  height: 80px;
+  height: 60px;
   border-bottom: 1px solid rgb(179, 179, 179);
 }
 
@@ -24,6 +24,7 @@ table thead tr {
   background: #7180bf;
   color: #fff;
   font-weight: 400;
+  height: 70px;
 }
 
 table tr th {
