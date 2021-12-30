@@ -1,5 +1,54 @@
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+
+import Table from "./components/Table";
+
+const baseURL = "https://canopy-frontend-task.now.sh/api/";
+
 function App() {
-  return <div className="App">hello react</div>;
+  const [holdingsData, setHoldingsData] = useState([]);
+  const [fetchStatus, setFetchStatus] = useState({
+    isLoading: false,
+    isError: false
+  });
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        setFetchStatus({
+          ...fetchStatus,
+          isLoading: true
+        });
+
+        const fetchedData = await axios.get(`${baseURL}holdings`);
+
+        setFetchStatus({
+          ...fetchStatus,
+          isLoading: false,
+          isError: false
+        });
+
+        setHoldingsData(fetchedData);
+      } catch (error) {
+        setFetchStatus({
+          ...fetchStatus,
+          isLoading: false,
+          isError: true
+        });
+      }
+    }
+
+    fetchData();
+  }, []);
+
+  return (
+    <div className="App">
+      {fetchStatus.isLoading ? "Loading..." : <Table />}
+      <br />
+      {fetchStatus.isError ? "Something went wrong..." : ""}
+      <br />
+    </div>
+  );
 }
 
 export default App;
