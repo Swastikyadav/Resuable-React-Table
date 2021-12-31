@@ -1,4 +1,4 @@
-import { useTable, useSortBy } from "react-table";
+import { useTable, useSortBy, usePagination } from "react-table";
 
 import { formatDate, formateAmount } from "../utils";
 
@@ -9,9 +9,21 @@ function Table({ data, columns }) {
     getTableProps,
     getTableBodyProps,
     headerGroups,
-    rows,
-    prepareRow
-  } = useTable({ columns, data }, useSortBy);
+    page,
+    prepareRow,
+
+    previousPage,
+    nextPage,
+    canPreviousPage,
+    canNextPage,
+    pageCount,
+    gotoPage,
+    state: { pageIndex }
+  } = useTable(
+    { columns, data, initialState: { pageIndex: 0 } },
+    useSortBy,
+    usePagination
+  );
 
   const formatCellValue = cell => {
     const cellValue = cell.render("Cell").props.value;
@@ -52,7 +64,7 @@ function Table({ data, columns }) {
         </thead>
 
         <tbody {...getTableBodyProps()}>
-          {rows.map(row => {
+          {page.map(row => {
             prepareRow(row);
             return (
               <tr {...row.getRowProps()}>
@@ -66,6 +78,29 @@ function Table({ data, columns }) {
           })}
         </tbody>
       </table>
+
+      <div className="table__pagination">
+        <button onClick={() => previousPage()} disabled={!canPreviousPage}>
+          &#x21d0; Back
+        </button>
+        {Array.from(Array(pageCount).keys()).map(page => {
+          return (
+            <button
+              key={page}
+              onClick={() => gotoPage(page)}
+              style={{
+                background: `${pageIndex === page ? "#7180bf" : ""}`,
+                color: `${pageIndex === page ? "#fff" : ""}`
+              }}
+            >
+              {page + 1}
+            </button>
+          );
+        })}
+        <button onClick={() => nextPage()} disabled={!canNextPage}>
+          Next &#x21d2;
+        </button>
+      </div>
     </div>
   );
 }

@@ -49,3 +49,24 @@ table tr td {
 .table__sortIcon {
   font-size: 16px;
 }
+
+.table__pagination {
+  min-width: 600px;
+  width: 100rem;
+  height: 50px;
+  margin: 0 auto;
+  background: #fff;
+  border-bottom: 1px solid rgb(179, 179, 179);
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+}
+
+.table__pagination button {
+  padding: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.75);
+  outline: none;
+  cursor: pointer;
+  margin: 3px;
+}
