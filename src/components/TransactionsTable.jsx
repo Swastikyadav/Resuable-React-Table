@@ -3,7 +3,7 @@ import Loader from "./Loader";
 
 import { transactionsColumns } from "../utils";
 
-function HoldingsTable({ data }) {
+function TransactionsTable({ data }) {
   return (
     <div className="transactionsTable">
       <h2>Table with transactions data.</h2>
@@ -22,4 +22,4 @@ function HoldingsTable({ data }) {
   );
 }
 
-export default HoldingsTable;
+export default TransactionsTable;
