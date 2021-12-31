@@ -3,47 +3,49 @@
 .table-div {
   font-size: 1.3rem;
   overflow-x: auto;
-}
-
-table {
+  max-width: 100rem;
   margin: 0 auto;
-  min-width: 600px;
-  width: 100rem;
-  border-collapse: collapse;
   box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
-table tr {
+.table {
+  margin: 0 auto;
+  min-width: 600px;
+  width: 100rem;
+  max-width: 100rem;
+  border-collapse: collapse;
+}
+
+.table .tr {
   background: #fff;
   text-align: center;
   height: 60px;
   border-bottom: 1px solid rgb(179, 179, 179);
 }
 
-table thead tr {
+.table .thead .tr {
   background: #7180bf;
   color: #fff;
   font-weight: 400;
   height: 70px;
 }
 
-table tr th {
+.table .tr .th {
   padding: 5px;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-left: 1px solid rgba(255, 255, 255, 0.4);
   border-right: 1px solid rgba(255, 255, 255, 0.4);
 }
 
-table tr td {
+.table .tr .td {
   padding: 5px;
-  text-align: center;
-  border-right: 1px solid rgb(179, 179, 179);
-}
-
-.table__th {
   display: flex;
   align-items: center;
   justify-content: center;
+  word-break: break-all;
+  border-right: 1px solid rgb(179, 179, 179);
 }
 
 .table__sortIcon {
@@ -52,15 +54,11 @@ table tr td {
 
 .table__pagination {
   min-width: 600px;
-  width: 100rem;
   height: 50px;
   margin: 0 auto;
   background: #fff;
-  border-bottom: 1px solid rgb(179, 179, 179);
-  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.75);
   display: flex;
   align-items: center;
-  /* justify-content: center; */
 }
 
 .table__pagination button {
@@ -69,4 +67,21 @@ table tr td {
   outline: none;
   cursor: pointer;
   margin: 3px;
+}
+
+.th__resizer {
+  display: inline-block;
+  background: #fff;
+  width: 2px;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translateX(50%);
+  z-index: 1;
+  touch-action: none;
+}
+
+.th__isResizing {
+  background: red;
 }

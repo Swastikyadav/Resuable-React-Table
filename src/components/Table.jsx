@@ -1,4 +1,10 @@
-import { useTable, useSortBy, usePagination } from "react-table";
+import {
+  useTable,
+  useSortBy,
+  usePagination,
+  useFlexLayout,
+  useResizeColumns
+} from "react-table";
 
 import { formatDate, formateAmount } from "../utils";
 
@@ -22,7 +28,9 @@ function Table({ data, columns }) {
   } = useTable(
     { columns, data, initialState: { pageIndex: 0 } },
     useSortBy,
-    usePagination
+    usePagination,
+    useFlexLayout,
+    useResizeColumns
   );
 
   const formatCellValue = cell => {
@@ -39,38 +47,50 @@ function Table({ data, columns }) {
 
   return (
     <div className="table-div">
-      <table {...getTableProps()}>
-        <thead>
-          <tr {...headerGroups[0].getHeaderGroupProps()}>
+      <table className="table" {...getTableProps()}>
+        <thead className="thead">
+          <tr className="tr" {...headerGroups[0].getHeaderGroupProps()}>
             {headerGroups[0].headers.map(column => (
-              <th {...column.getHeaderProps(column.getSortByToggleProps())}>
-                <div className="table__th">
-                  {column.render("Header")}
-                  <span className="table__sortIcon">
-                    {column.isSorted ? (
-                      column.isSortedDesc ? (
-                        <> &#x21d3;</>
-                      ) : (
-                        <> &#x21d1;</>
-                      )
+              <th
+                className="th"
+                {...column.getHeaderProps(column.getSortByToggleProps(), {
+                  style: { minWidth: column.minWidth, width: column.width }
+                })}
+              >
+                {column.render("Header")}
+                <span className="table__sortIcon">
+                  {column.isSorted ? (
+                    column.isSortedDesc ? (
+                      <> &#x21d3;</>
                     ) : (
-                      <> &#x21d5;</>
-                    )}
-                  </span>
-                </div>
+                      <> &#x21d1;</>
+                    )
+                  ) : (
+                    <> &#x21d5;</>
+                  )}
+                </span>
+
+                <div
+                  {...column.getResizerProps()}
+                  className={`th__resizer ${
+                    column.isResizing ? "th__isResizing" : ""
+                  }`}
+                />
               </th>
             ))}
           </tr>
         </thead>
 
-        <tbody {...getTableBodyProps()}>
+        <tbody className="tbody" {...getTableBodyProps()}>
           {page.map(row => {
             prepareRow(row);
             return (
-              <tr {...row.getRowProps()}>
+              <tr className="tr" {...row.getRowProps()}>
                 {row.cells.map(cell => {
                   return (
-                    <td {...cell.getCellProps()}>{formatCellValue(cell)}</td>
+                    <td className="td" {...cell.getCellProps()}>
+                      {formatCellValue(cell)}
+                    </td>
                   );
                 })}
               </tr>
