@@ -39,3 +39,13 @@ table tr td {
   text-align: center;
   border-right: 1px solid rgb(179, 179, 179);
 }
+
+.table__th {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.table__sortIcon {
+  font-size: 16px;
+}

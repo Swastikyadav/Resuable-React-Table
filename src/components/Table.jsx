@@ -1,4 +1,4 @@
-import { useTable } from "react-table";
+import { useTable, useSortBy } from "react-table";
 
 import { formatDate, formateAmount } from "../utils";
 
@@ -11,7 +11,7 @@ function Table({ data, columns }) {
     headerGroups,
     rows,
     prepareRow
-  } = useTable({ columns, data });
+  } = useTable({ columns, data }, useSortBy);
 
   const formatCellValue = cell => {
     const cellValue = cell.render("Cell").props.value;
@@ -31,7 +31,22 @@ function Table({ data, columns }) {
         <thead>
           <tr {...headerGroups[0].getHeaderGroupProps()}>
             {headerGroups[0].headers.map(column => (
-              <th {...column.getHeaderProps()}>{column.render("Header")}</th>
+              <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                <div className="table__th">
+                  {column.render("Header")}
+                  <span className="table__sortIcon">
+                    {column.isSorted ? (
+                      column.isSortedDesc ? (
+                        <> &#x21d3;</>
+                      ) : (
+                        <> &#x21d1;</>
+                      )
+                    ) : (
+                      <> &#x21d5;</>
+                    )}
+                  </span>
+                </div>
+              </th>
             ))}
           </tr>
         </thead>
